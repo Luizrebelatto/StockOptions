@@ -6,9 +6,16 @@ class StockListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         Task {
             await populateStocks()
         }
+    }
+    
+    private func configureUI () {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Stocks"
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "StockCell")
     }
     
     private func populateStocks() async {
