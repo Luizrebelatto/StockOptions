@@ -29,6 +29,7 @@ class StockListViewController: UITableViewController {
         
         var content = cell.defaultContentConfiguration()
         content.text = stock.symbol
+        content.secondaryText = stock.description
         cell.contentConfiguration = content
          
         return cell
@@ -36,5 +37,8 @@ class StockListViewController: UITableViewController {
     
     private func populateStocks() async {
         await vm.populateStocks(url: Constants.Urls.allStocks)
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 }
