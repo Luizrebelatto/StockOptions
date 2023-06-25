@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  stockOptions
-//
-//  Created by Luiz Gabriel Rebelatto Bianchi on 24/06/23.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -19,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: scene)
-        window.rootViewController = ViewController()
+        window.rootViewController = UINavigationController(rootViewController: StockListViewController())
         window.makeKeyAndVisible()
         self.window = window
     }

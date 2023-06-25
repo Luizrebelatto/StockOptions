@@ -1,10 +1,3 @@
-//
-//  StockListViewModel.swift
-//  stockOptions
-//
-//  Created by Luiz Gabriel Rebelatto Bianchi on 25/06/23.
-//
-
 import Foundation
 
 class StockListViewModel {

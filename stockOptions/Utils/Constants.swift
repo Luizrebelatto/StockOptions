@@ -1,10 +1,3 @@
-//
-//  Constants.swift
-//  stockOptions
-//
-//  Created by Luiz Gabriel Rebelatto Bianchi on 24/06/23.
-//
-
 import Foundation
 
 struct Constants {
