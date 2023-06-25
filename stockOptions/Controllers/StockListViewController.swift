@@ -15,23 +15,26 @@ class StockListViewController: UITableViewController {
     private func configureUI () {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Stocks"
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "StockCell")
+        tableView.register(StockCell.self, forCellReuseIdentifier: "StockCell")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         vm.stocks.count
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath)
-        let stock = vm.stocks[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell", for: indexPath) as? StockCell else {
+         fatalError("StockCell is not defined")
+        }
         
-        var content = cell.defaultContentConfiguration()
-        content.text = stock.symbol
-        content.secondaryText = stock.description
-        cell.contentConfiguration = content
-         
+        let stock = vm.stocks[indexPath.row]
+        cell.configure(stock)
+        
         return cell
     }
     
